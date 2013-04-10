@@ -1,6 +1,6 @@
 <?php
 
-namespace TPM\PaymentSlimCDBundle;
+namespace TPM\Payment\SlimCDBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  *
  * @author Michael Poplin <thepoplin@gmail.com>
  */
-class PaymentSlimCDBundle extends Bundle
+class TPMPaymentSlimCDBundle extends Bundle
 {
 
 }
