@@ -1,0 +1,32 @@
+{
+    "name": "tpm/payment-slimcd-bundle",
+    "type": "symfony-bundle",
+    "description": "JMSPaymentCore integration for the Slim CD payment gateway.",
+    "keywords": ["payment", "slimcd"],
+    "homepage": "https://github.com/mpoplin/PaymentSlimCDBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Poplin",
+            "email": "thepoplin@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/framework-bundle": ">=2.0,<2.2-dev",
+        "jms/payment-core-bundle": "dev-master"
+    },
+    "require-dev": {
+        "symfony/browser-kit": "2.1.x-dev"
+    },
+    "autoload": {
+        "psr-0": { "TPM\\PaymentSlimCDBundle": "" }
+    },
+    "target-dir": "TPM/PaymentSlimCDBundle",
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.1-dev"
+        }
+    }
+}
