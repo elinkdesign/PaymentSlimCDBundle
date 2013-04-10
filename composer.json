@@ -20,9 +20,9 @@
         "symfony/browser-kit": "2.1.x-dev"
     },
     "autoload": {
-        "psr-0": { "TPM\\PaymentSlimCDBundle": "" }
+        "psr-0": { "TPM\\Payment\\SlimCDBundle": "" }
     },
-    "target-dir": "TPM/PaymentSlimCDBundle",
+    "target-dir": "TPM/Payment/SlimCDBundle",
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {
