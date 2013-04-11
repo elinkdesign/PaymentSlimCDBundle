@@ -9,6 +9,7 @@
         <parameter key="payment.plugin.slimcd_check.class">TPM\Payment\SlimCDBundle\Plugin\CheckPlugin</parameter>
         <parameter key="payment.slimcd.authentication_strategy.token.class">TPM\Payment\SlimCDBundle\Client\Authentication\TokenAuthenticationStrategy</parameter>
         <parameter key="payment.slimcd.clientid"></parameter>
+        <parameter key="payment.slimcd.endpoint"></parameter>
         <parameter key="payment.slimcd.password"></parameter>
         <parameter key="payment.slimcd.siteid"></parameter>
         <parameter key="payment.slimcd.priceid"></parameter>
@@ -27,6 +28,7 @@
         <service id="payment.slimcd.authentication_strategy.token" class="%payment.slimcd.authentication_strategy.token.class%">
             <argument type="collection">
                 <argument>%slimcd_clientid%</argument>
+                <argument>%slimcd_endpoint%</argument>
                 <argument>%slimcd_password%</argument>
                 <argument>%slimcd_siteid%</argument>
                 <argument>%slimcd_priceid%</argument>
