@@ -27,19 +27,19 @@
 
         <service id="payment.slimcd.authentication_strategy.token" class="%payment.slimcd.authentication_strategy.token.class%">
             <argument type="collection">
-                <argument>%slimcd_clientid%</argument>
-                <argument>%slimcd_endpoint%</argument>
-                <argument>%slimcd_password%</argument>
-                <argument>%slimcd_siteid%</argument>
-                <argument>%slimcd_priceid%</argument>
-                <argument>%slimcd_key%</argument>
-                <argument>%slimcd_usetestaccount%</argument>
+                <argument>%payment.slimcd.clientid%</argument>
+                <argument>%payment.slimcd.endpoint%</argument>
+                <argument>%payment.slimcd.password%</argument>
+                <argument>%payment.slimcd.siteid%</argument>
+                <argument>%payment.slimcd.priceid%</argument>
+                <argument>%payment.slimcd.key%</argument>
+                <argument>%payment.slimcd.usetestaccount%</argument>
             </argument>
         </service>
 
         <service id="payment.slimcd.client" class="%payment.slimcd.client.class%">
             <argument type="service" id="payment.slimcd.authentication_strategy" />
-            <argument>%payment.slimcd.debug%</argument>
+            <argument>%payment.slimcd.usetestaccount%</argument>
         </service>
 
         <service id="payment.plugin.slimcd_credit_card" class="%payment.plugin.slimcd_credit_card.class%">

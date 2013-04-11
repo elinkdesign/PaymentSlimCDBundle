@@ -24,7 +24,7 @@ class TPMPaymentSlimCDExtension extends Extension
         $container->setParameter('payment.slimcd.siteid', $config['slimcd_siteid']);
         $container->setParameter('payment.slimcd.priceid', $config['slimcd_priceid']);
         $container->setParameter('payment.slimcd.key', $config['slimcd_key']);
-        $container->setParameter('payment.slimcd.usertestaccount', $config['slimcd_usertestaccount']);
+        $container->setParameter('payment.slimcd.usetestaccount', $config['slimcd_usetestaccount']);
         $container->setParameter('payment.slimcd.endpoint', $config['slimcd_endpoint']);
     }
 }
