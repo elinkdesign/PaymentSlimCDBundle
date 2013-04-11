@@ -43,12 +43,12 @@
         </service>
 
         <service id="payment.plugin.slimcd_credit_card" class="%payment.plugin.slimcd_credit_card.class%">
-            <argument type="service" id="payment.slimcd.credit_card" />
+            <argument type="service" id="payment.slimcd.client" />
             <tag name="payment.plugin" />
         </service>
 
         <service id="payment.plugin.slimcd_check" class="%payment.plugin.slimcd_check.class%">
-            <argument type="service" id="payment.slimcd.check" />
+            <argument type="service" id="payment.slimcd.client" />
             <tag name="payment.plugin" />
         </service>
 
