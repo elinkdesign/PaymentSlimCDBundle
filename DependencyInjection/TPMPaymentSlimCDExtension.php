@@ -19,12 +19,12 @@ class TPMPaymentSlimCDExtension extends Extension
         $xmlLoader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $xmlLoader->load('services.xml');
 
-        $container->setParameter('payment.slimcd.clientid', $config['clientid']);
-        $container->setParameter('payment.slimcd.password', $config['password']);
-        $container->setParameter('payment.slimcd.siteid', $config['siteid']);
-        $container->setParameter('payment.slimcd.priceid', $config['priceid']);
-        $container->setParameter('payment.slimcd.key', $config['key']);
-        $container->setParameter('payment.slimcd.usertestaccount', $config['usertestaccount']);
-        $container->setParameter('payment.slimcd.endpoint', $config['endpoint']);
+        $container->setParameter('payment.slimcd.clientid', $config['slimcd_clientid']);
+        $container->setParameter('payment.slimcd.password', $config['slimcd_password']);
+        $container->setParameter('payment.slimcd.siteid', $config['slimcd_siteid']);
+        $container->setParameter('payment.slimcd.priceid', $config['slimcd_priceid']);
+        $container->setParameter('payment.slimcd.key', $config['slimcd_key']);
+        $container->setParameter('payment.slimcd.usertestaccount', $config['slimcd_usertestaccount']);
+        $container->setParameter('payment.slimcd.endpoint', $config['slimcd_endpoint']);
     }
 }
