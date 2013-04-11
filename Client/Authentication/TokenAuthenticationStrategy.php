@@ -35,4 +35,8 @@ class TokenAuthenticationStrategy implements AuthenticationStrategyInterface
         $request->request->set('GW_KEY', $this->key);
         $request->request->set('USETESTACCOUNT', $this->usetestaccount);
     }
+
+    function getApiEndpoint() {
+        return $this->endpoint;
+    }
 }
