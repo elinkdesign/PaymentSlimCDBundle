@@ -14,7 +14,7 @@ class TPMPaymentSlimCDExtension extends Extension
     {
         $configuration = new Configuration();
         $processor = new Processor();
-        $config = $processor->process($configuration, $configs);
+        $config = $processor->process($configuration->getConfigTreeBuilder(), $configs);
 
         $xmlLoader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $xmlLoader->load('services.xml');

@@ -28,6 +28,7 @@ class Configuration implements ConfigurationInterface
                     ->scalarNode('slimcd_usertestaccount')->defaultValue('false')->end()
                     ->scalarNode('slimcd_endpoint')->defaultValue('https://stats.slimcd.com/wswebservices/transact.asmx/PostXML')->cannotBeEmpty()->end()
                 ->end()
-            ->end();
+            ->end()
+            ->buildTree();
     }
 }
