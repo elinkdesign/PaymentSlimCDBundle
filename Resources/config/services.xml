@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="payment.plugin.slimcd_credit_card.class">TPM\Payment\SlimCDBundle\Plugin\CreditCardPlugin</parameter>
+        <parameter key="payment.plugin.slimcd_check.class">TPM\Payment\SlimCDBundle\Plugin\CheckPlugin</parameter>
+        <parameter key="payment.slimcd.authentication_strategy.token.class">TPM\Payment\SlimCDBundle\Client\Authentication\TokenAuthenticationStrategy</parameter>
+        <parameter key="payment.slimcd.clientid"></parameter>
+        <parameter key="payment.slimcd.password"></parameter>
+        <parameter key="payment.slimcd.siteid"></parameter>
+        <parameter key="payment.slimcd.priceid"></parameter>
+        <parameter key="payment.slimcd.key"></parameter>
+        <parameter key="payment.slimcd.usetestaccount"></parameter>
+        
+        <parameter key="payment.form.credit_card_type.class">TPM\Payment\SlimCDBundle\Form\CreditCardType</parameter>
+        <parameter key="payment.form.check_type.class">TPM\Payment\SlimCDBundle\Form\CheckType</parameter>
+
+        <parameter key="payment.slimcd.client.class">TPM\Payment\SlimCDBundle\Client\Client</parameter>
+    </parameters>
+
+    <services>
+        <service id="payment.slimcd.authentication_strategy" alias="payment.slimcd.authentication_strategy.token" />
+
+        <service id="payment.slimcd.authentication_strategy.token" class="%payment.slimcd.authentication_strategy.token.class%">
+            <argument type="collection">
+                <argument>%slimcd_clientid%</argument>
+                <argument>%slimcd_password%</argument>
+                <argument>%slimcd_siteid%</argument>
+                <argument>%slimcd_priceid%</argument>
+                <argument>%slimcd_key%</argument>
+                <argument>%slimcd_usetestaccount%</argument>
+            </argument>
+        </service>
+
+        <service id="payment.slimcd.client" class="%payment.slimcd.client.class%">
+            <argument type="service" id="payment.slimcd.authentication_strategy" />
+            <argument>%payment.slimcd.debug%</argument>
+        </service>
+
+        <service id="payment.plugin.slimcd_credit_card" class="%payment.plugin.slimcd_credit_card.class%">
+            <argument type="service" id="payment.slimcd.credit_card" />
+            <tag name="payment.plugin" />
+        </service>
+
+        <service id="payment.plugin.slimcd_check" class="%payment.plugin.slimcd_check.class%">
+            <argument type="service" id="payment.slimcd.check" />
+            <tag name="payment.plugin" />
+        </service>
+
+        <service id="payment.form.slimcd_credit_card_type" class="%payment.form.credit_card_type.class%">
+            <tag name="payment.method_form_type" />
+            <tag name="form.type" alias="slimcd_credit_card" />
+        </service>
+
+        <service id="payment.form.slimcd_check_type" class="%payment.form.check_type.class%">
+            <tag name="payment.method_form_type" />
+            <tag name="form.type" alias="slimcd_check" />
+        </service>
+    </services>
+</container>
