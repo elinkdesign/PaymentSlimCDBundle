@@ -14,15 +14,15 @@ class TokenAuthenticationStrategy implements AuthenticationStrategyInterface
     protected $key;
     protected $usetestaccount;
 
-    public function __construct($clientid, $endpoint, $password, $siteid, $priceid, $key, $usetestaccount)
+    public function __construct($args)
     {
-        $this->clientid = $clientid;
-        $this->endpoint = $endpoint;
-        $this->password = $password;
-        $this->siteid = $siteid;
-        $this->priceid = $priceid;
-        $this->key = $key;
-        $this->usetestaccount = $usetestaccount;
+        $this->clientid = $args['clientid'];
+        $this->endpoint = $args['endpoint'];
+        $this->password = $args['password'];
+        $this->siteid = $args['siteid'];
+        $this->priceid = $args['priceid'];
+        $this->key = $args['key'];
+        $this->usetestaccount = $args['usetestaccount'];
     }
 
     public function authenticate(Request $request)
@@ -34,9 +34,5 @@ class TokenAuthenticationStrategy implements AuthenticationStrategyInterface
         $request->request->set('GW_PRICEID', $this->priceid);
         $request->request->set('GW_KEY', $this->key);
         $request->request->set('USETESTACCOUNT', $this->usetestaccount);
-    }
-
-    function getApiEndpoint() {
-        return $this->endpoint;
     }
 }

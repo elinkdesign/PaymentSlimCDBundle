@@ -27,13 +27,13 @@
 
         <service id="payment.slimcd.authentication_strategy.token" class="%payment.slimcd.authentication_strategy.token.class%">
             <argument type="collection">
-                <argument>%payment.slimcd.clientid%</argument>
-                <argument>%payment.slimcd.endpoint%</argument>
-                <argument>%payment.slimcd.password%</argument>
-                <argument>%payment.slimcd.siteid%</argument>
-                <argument>%payment.slimcd.priceid%</argument>
-                <argument>%payment.slimcd.key%</argument>
-                <argument>%payment.slimcd.usetestaccount%</argument>
+                <argument key="clientid">%payment.slimcd.clientid%</argument>
+                <argument key="endpoint">%payment.slimcd.endpoint%</argument>
+                <argument key="password">%payment.slimcd.password%</argument>
+                <argument key="siteid">%payment.slimcd.siteid%</argument>
+                <argument key="priceid">%payment.slimcd.priceid%</argument>
+                <argument key="key">%payment.slimcd.key%</argument>
+                <argument key="usetestaccount">%payment.slimcd.usetestaccount%</argument>
             </argument>
         </service>
 
