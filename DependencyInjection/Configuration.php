@@ -13,7 +13,7 @@ class Configuration implements ConfigurationInterface
     /**
      * @return TreeBuilder
      */
-    public function getConfigTree()
+    public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
 
@@ -28,7 +28,6 @@ class Configuration implements ConfigurationInterface
                     ->scalarNode('slimcd_usertestaccount')->defaultValue('false')->end()
                     ->scalarNode('slimcd_endpoint')->defaultValue('https://stats.slimcd.com/wswebservices/transact.asmx/PostXML')->cannotBeEmpty()->end()
                 ->end()
-            ->end()
-            ->buildTree();
+            ->end();
     }
 }
