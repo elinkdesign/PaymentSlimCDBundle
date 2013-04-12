@@ -12,8 +12,21 @@ class CreditCardType extends AbstractType
         $builder
             ->add('holder', 'text', array('required' => false))
             ->add('number', 'text', array('required' => false))
-            ->add('expires', 'date', array('required' => false))
+            ->add('expires', 'date', array(
+                'required' => false,
+                'label' => 'Expiration Date',
+                'widget' => 'single_text',
+            ))
             ->add('code', 'text', array('required' => false))
+
+            'value'   => new \DateTime('now'),
+                'type'    => 'date',
+                'validation' => new Assert\Date(),
+                'options' => array(
+                    'label' => 'To',
+                    'widget' => 'single_text',
+                    'error_bubbling' => true
+                ),
         ;
     }
 
