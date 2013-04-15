@@ -25,7 +25,16 @@ class CreditCardType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->addEventSubscriber(new FullNameFieldSubscriber($builder->getFormFactory()))
+            // ->addEventSubscriber(new FullNameFieldSubscriber($builder->getFormFactory()))
+            ->add('recipient', 'genemu_jqueryautocomplete_text', array(
+                'route_name' => '_credit_card_ajax'
+            ))
+            ->add('fullName', 'text', array(
+                'required' => false,
+                'label' => 'Cardholder\'s Name',
+                'validation_constraint' => new Assert\NotBlank(),
+                'error_bubbling' => true
+            ))
             ->add('ccNumber', 'text', array(
                 'required' => false,
                 'label' => 'Card Number',
@@ -45,7 +54,7 @@ class CreditCardType extends AbstractType
                 'invalid_message' => 'Please enter a valid expiration date.',
                 'error_bubbling' => true
             ))
-            ->add('security_code', 'text', array(
+            ->add('securityCode', 'text', array(
                 'required' => false,
                 'label' => 'CVV Code',
                 'validation_constraint' => new Assert\NotBlank(),
@@ -95,10 +104,10 @@ class CreditCardType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            // 'data_class'      => 'Sylius\Bundle\SalesBundle\Order', // or whatever likely implements this
+            'data_class'      => 'NeaceLukens\Bundle\Entity\Order', // or whatever likely implements this
             'csrf_protection' => true,
             'csrf_field_name' => '_token',
-            'intention'       => 'credit_card',
+            'intention'       => 'slimcd_credit_card',
             'validation_groups' => function(FormInterface $form) {
                 // $data = $form->getData();
                 // if (Entity\ORDER::TYPE_CARDHOLDER == $data->getType()) {
