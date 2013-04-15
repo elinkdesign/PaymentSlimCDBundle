@@ -1,5 +1,5 @@
 <?php
-namespace TPM\Payment\SlimCDBundle\Client;
+namespace eLink\Payment\SlimCDBundle\Client;
 
 use Symfony\Component\HttpFoundation\ParameterBag;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace TPM\Payment\SlimCDBundle\DependencyInjection;
+namespace eLink\Payment\SlimCDBundle\DependencyInjection;
 
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\Config\FileLocator;
@@ -8,7 +8,7 @@ use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class TPMPaymentSlimCDExtension extends Extension
+class eLinkPaymentSlimCDExtension extends Extension
 {
     public function load(array $configs, ContainerBuilder $container)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace TPM\Payment\SlimCDBundle\Plugin\Exception;
+namespace eLink\Payment\SlimCDBundle\Plugin\Exception;
 
 use JMS\Payment\CoreBundle\Plugin\Exception\FinancialException;
 

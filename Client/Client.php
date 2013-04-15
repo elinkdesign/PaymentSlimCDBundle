@@ -1,11 +1,11 @@
 <?php
-namespace TPM\Payment\SlimCDBundle\Client;
+namespace eLink\Payment\SlimCDBundle\Client;
 
 use Symfony\Component\BrowserKit\Response as RawResponse;
 
 use JMS\Payment\CoreBundle\BrowserKit\Request;
 use JMS\Payment\CoreBundle\Plugin\Exception\CommunicationException;
-use TPM\Payment\SlimCDBundle\Client\Authentication\AuthenticationStrategyInterface;
+use eLink\Payment\SlimCDBundle\Client\Authentication\AuthenticationStrategyInterface;
 
 class Client
 {

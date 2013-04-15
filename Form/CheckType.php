@@ -1,6 +1,6 @@
 <?php
 
-namespace TPM\Payment\SlimCDBundle\Form;
+namespace eLink\Payment\SlimCDBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

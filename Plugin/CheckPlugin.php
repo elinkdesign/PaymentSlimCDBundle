@@ -1,6 +1,6 @@
 <?php
 
-namespace TPM\Payment\SlimCDBundle\Plugin;
+namespace eLink\Payment\SlimCDBundle\Plugin;
 
 use JMS\Payment\CoreBundle\Model\ExtendedDataInterface;
 use JMS\Payment\CoreBundle\Model\FinancialTransactionInterface;
@@ -13,8 +13,8 @@ use JMS\Payment\CoreBundle\Plugin\Exception\Action\VisitUrl;
 use JMS\Payment\CoreBundle\Plugin\Exception\ActionRequiredException;
 use JMS\Payment\CoreBundle\Plugin\Exception\InvalidPaymentInstructionException;
 use JMS\Payment\CoreBundle\Util\Number;
-use TPM\Payment\SlimCDBundle\Client\Client;
-use TPM\Payment\SlimCDBundle\Client\Response;
+use eLink\Payment\SlimCDBundle\Client\Client;
+use eLink\Payment\SlimCDBundle\Client\Response;
 
 class CheckPlugin extends AbstractPlugin
 {

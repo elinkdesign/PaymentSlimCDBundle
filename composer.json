@@ -1,9 +1,9 @@
 {
-    "name": "tpm/payment-slimcd-bundle",
+    "name": "elink/payment-slimcd-bundle",
     "type": "symfony-bundle",
-    "description": "JMSPaymentCore integration for the Slim CD payment gateway.",
+    "description": "JMSPaymentCore integration for the Slim CD payment gateway and further customized for Neace Lukens E&O web application.",
     "keywords": ["payment", "slimcd"],
-    "homepage": "https://github.com/mpoplin/PaymentSlimCDBundle",
+    "homepage": "https://github.com/elinkdesign/PaymentSlimCDBundle",
     "license": "MIT",
     "authors": [
         {
@@ -20,9 +20,9 @@
         "symfony/browser-kit": "2.1.x-dev"
     },
     "autoload": {
-        "psr-0": { "TPM\\Payment\\SlimCDBundle": "" }
+        "psr-0": { "eLink\\Payment\\SlimCDBundle": "" }
     },
-    "target-dir": "TPM/Payment/SlimCDBundle",
+    "target-dir": "eLink/Payment/SlimCDBundle",
     "minimum-stability": "dev",
     "extra": {
         "branch-alias": {

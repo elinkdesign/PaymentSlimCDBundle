@@ -1,6 +1,6 @@
 <?php
 
-namespace TPM\Payment\SlimCDBundle\Client\Authentication;
+namespace eLink\Payment\SlimCDBundle\Client\Authentication;
 
 use JMS\Payment\CoreBundle\BrowserKit\Request;
 

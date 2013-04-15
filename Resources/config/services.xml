@@ -5,9 +5,9 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="payment.plugin.slimcd_credit_card.class">TPM\Payment\SlimCDBundle\Plugin\CreditCardPlugin</parameter>
-        <parameter key="payment.plugin.slimcd_check.class">TPM\Payment\SlimCDBundle\Plugin\CheckPlugin</parameter>
-        <parameter key="payment.slimcd.authentication_strategy.token.class">TPM\Payment\SlimCDBundle\Client\Authentication\TokenAuthenticationStrategy</parameter>
+        <parameter key="payment.plugin.slimcd_credit_card.class">eLink\Payment\SlimCDBundle\Plugin\CreditCardPlugin</parameter>
+        <parameter key="payment.plugin.slimcd_check.class">eLink\Payment\SlimCDBundle\Plugin\CheckPlugin</parameter>
+        <parameter key="payment.slimcd.authentication_strategy.token.class">eLink\Payment\SlimCDBundle\Client\Authentication\TokenAuthenticationStrategy</parameter>
         <parameter key="payment.slimcd.clientid"></parameter>
         <parameter key="payment.slimcd.endpoint"></parameter>
         <parameter key="payment.slimcd.password"></parameter>
@@ -16,10 +16,10 @@
         <parameter key="payment.slimcd.key"></parameter>
         <parameter key="payment.slimcd.usetestaccount"></parameter>
         
-        <parameter key="payment.form.credit_card_type.class">TPM\Payment\SlimCDBundle\Form\CreditCardType</parameter>
-        <parameter key="payment.form.check_type.class">TPM\Payment\SlimCDBundle\Form\CheckType</parameter>
+        <parameter key="payment.form.credit_card_type.class">eLink\Payment\SlimCDBundle\Form\CreditCardType</parameter>
+        <parameter key="payment.form.check_type.class">eLink\Payment\SlimCDBundle\Form\CheckType</parameter>
 
-        <parameter key="payment.slimcd.client.class">TPM\Payment\SlimCDBundle\Client\Client</parameter>
+        <parameter key="payment.slimcd.client.class">eLink\Payment\SlimCDBundle\Client\Client</parameter>
     </parameters>
 
     <services>

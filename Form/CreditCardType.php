@@ -1,8 +1,8 @@
 <?php
 
-namespace TPM\Payment\SlimCDBundle\Form;
+namespace eLink\Payment\SlimCDBundle\Form;
 
-use TPM\Payment\SlimCDBundle\Form\EventListener\FullNameFieldSubscriber;
+use eLink\Payment\SlimCDBundle\Form\EventListener\FullNameFieldSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;

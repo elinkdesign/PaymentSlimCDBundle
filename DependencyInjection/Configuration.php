@@ -1,6 +1,6 @@
 <?php
 
-namespace TPM\Payment\SlimCDBundle\DependencyInjection;
+namespace eLink\Payment\SlimCDBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
 
         return $treeBuilder
-            ->root('tpm_payment_slimcd')
+            ->root('payment_slimcd')
                 ->children()
                     ->scalarNode('slimcd_clientid')->isRequired()->cannotBeEmpty()->end()
                     ->scalarNode('slimcd_password')->isRequired()->cannotBeEmpty()->end()
