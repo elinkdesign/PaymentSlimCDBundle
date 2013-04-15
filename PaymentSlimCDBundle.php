@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  *
  * @author Michael Poplin <mpoplin@elinkdesign.com>
  */
-class PaymentSlimCDBundle extends Bundle
+class eLinkPaymentSlimCDBundle extends Bundle
 {
 
 }
