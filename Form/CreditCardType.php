@@ -104,7 +104,7 @@ class CreditCardType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'      => 'NeaceLukens\Bundle\Entity\Order', // or whatever likely implements this
+            // 'data_class'      => 'NeaceLukens\Bundle\Entity\Order', // or whatever likely implements this
             'csrf_protection' => true,
             'csrf_field_name' => '_token',
             'intention'       => 'slimcd_credit_card',
