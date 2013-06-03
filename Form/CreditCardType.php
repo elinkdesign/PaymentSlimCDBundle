@@ -26,12 +26,25 @@ class CreditCardType extends AbstractType
     {
         $builder
             // ->addEventSubscriber(new FullNameFieldSubscriber($builder->getFormFactory()))
-            ->add('recipient', 'genemu_jqueryautocomplete_text', array(
-                'route_name' => '_credit_card_ajax'
-            ))
+            // ->add('recipient', 'genemu_jqueryautocomplete_text', array(
+            //     'route_name' => '_credit_card_ajax'
+            // ))
             ->add('fullName', 'text', array(
                 'required' => false,
                 'label' => 'Cardholder\'s Name',
+                'validation_constraint' => new Assert\NotBlank(),
+                'error_bubbling' => true
+            ))
+            ->add('ccType', 'choice', array(
+                'required' => false,
+                'label' => 'Card Type',
+                'choices'   => array(
+                    'visa' => 'Visa', 
+                    'mc' => 'MasterCard',
+                    'discover' => 'Discover',
+                    'amex' => 'American Express'
+                ),
+                'empty_value' => 'Choose the card type',
                 'validation_constraint' => new Assert\NotBlank(),
                 'error_bubbling' => true
             ))
