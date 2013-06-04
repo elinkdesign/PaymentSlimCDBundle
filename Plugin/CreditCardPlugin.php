@@ -30,6 +30,6 @@ class CreditCardPlugin extends AbstractPlugin
 
     public function processes($method)
     {
-        return 'slimcd_credit_card' === $method;
+        return 'credit_card' === $method;
     }
 }

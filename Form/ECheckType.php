@@ -18,6 +18,6 @@ class ECheckType extends AbstractType
 
     public function getName()
     {
-        return 'slimcd_check';
+        return 'e_check';
     }
 }

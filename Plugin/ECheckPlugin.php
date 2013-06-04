@@ -30,6 +30,6 @@ class ECheckPlugin extends AbstractPlugin
 
     public function processes($method)
     {
-        return 'slimcd_check' === $method;
+        return 'e_check' === $method;
     }
 }
