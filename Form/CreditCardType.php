@@ -26,13 +26,13 @@ class CreditCardType extends AbstractType
     {
         $builder
             ->add('fullName', 'text', array(
-                'required' => true,
+                'required' => false,
                 'label' => 'Cardholder\'s Name',
                 'validation_constraint' => new Assert\NotBlank(),
                 'error_bubbling' => true
             ))
             ->add('ccType', 'choice', array(
-                'required' => true,
+                'required' => false,
                 'label' => 'Card Type',
                 'choices'   => array(
                     'visa' => 'Visa', 
@@ -45,7 +45,7 @@ class CreditCardType extends AbstractType
                 'error_bubbling' => true
             ))
             ->add('ccNumber', 'text', array(
-                'required' => true,
+                'required' => false,
                 'label' => 'Card Number',
                 'max_length' => 16,
                 'validation_constraint' => new Assert\NotBlank(),
@@ -54,7 +54,7 @@ class CreditCardType extends AbstractType
                 'error_bubbling' => true
             ))
             ->add('expires', 'date', array(
-                'required' => true,
+                'required' => false,
                 'label' => 'Expiration Date',
                 'widget' => 'choice',
                 'format' => 'MM yyyy dd',
@@ -71,7 +71,7 @@ class CreditCardType extends AbstractType
                 'error_bubbling' => true
             ))
             ->add('securityCode', 'text', array(
-                'required' => true,
+                'required' => false,
                 'label' => 'CVV Code',
                 'validation_constraint' => new Assert\NotBlank(),
                 'invalid_message' => 'Please enter a valid expiration date.',
