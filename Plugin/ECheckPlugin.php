@@ -16,7 +16,7 @@ use JMS\Payment\CoreBundle\Util\Number;
 use eLink\Payment\SlimCDBundle\Client\Client;
 use eLink\Payment\SlimCDBundle\Client\Response;
 
-class CheckPlugin extends AbstractPlugin
+class ECheckPlugin extends AbstractPlugin
 {
     public function checkPaymentInstruction(PaymentInstructionInterface $instruction)
     {
@@ -30,6 +30,6 @@ class CheckPlugin extends AbstractPlugin
 
     public function processes($method)
     {
-        return 'check' === $method;
+        return 'slimcd_check' === $method;
     }
 }

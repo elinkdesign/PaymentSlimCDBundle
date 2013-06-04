@@ -9,15 +9,11 @@ class CheckType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('account_number', 'text', array('required' => false))
-            ->add('routing_number', 'text', array('required' => false))
-            ->add('check_number', 'text', array('required' => false))
-        ;
+        $builder->add('check_number', 'text', array('required' => true));
     }
 
     public function getName()
     {
-        return 'slimcd_check';
+        return 'check';
     }
 }

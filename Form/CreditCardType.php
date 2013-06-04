@@ -25,10 +25,6 @@ class CreditCardType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            // ->addEventSubscriber(new FullNameFieldSubscriber($builder->getFormFactory()))
-            // ->add('recipient', 'genemu_jqueryautocomplete_text', array(
-            //     'route_name' => '_credit_card_ajax'
-            // ))
             ->add('fullName', 'text', array(
                 'required' => false,
                 'label' => 'Cardholder\'s Name',
