@@ -5,8 +5,9 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="payment.plugin.slimcd_credit_card.class">eLink\Payment\SlimCDBundle\Plugin\CreditCardPlugin</parameter>
-        <parameter key="payment.plugin.slimcd_check.class">eLink\Payment\SlimCDBundle\Plugin\CheckPlugin</parameter>
+        <parameter key="payment.plugin.credit_card.class">eLink\Payment\SlimCDBundle\Plugin\CreditCardPlugin</parameter>
+        <parameter key="payment.plugin.e_check.class">eLink\Payment\SlimCDBundle\Plugin\ECheckPlugin</parameter>
+        <parameter key="payment.plugin.check.class">eLink\Payment\SlimCDBundle\Plugin\CheckPlugin</parameter>
         <parameter key="payment.slimcd.authentication_strategy.token.class">eLink\Payment\SlimCDBundle\Client\Authentication\TokenAuthenticationStrategy</parameter>
         <parameter key="payment.slimcd.clientid"></parameter>
         <parameter key="payment.slimcd.endpoint"></parameter>
