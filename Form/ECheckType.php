@@ -10,9 +10,9 @@ class ECheckType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('account_number', 'text', array('required' => false))
-            ->add('routing_number', 'text', array('required' => false))
-            ->add('check_number', 'text', array('required' => false))
+            ->add('accountNumber', 'text', array('required' => false))
+            ->add('routingNumber', 'text', array('required' => false))
+            ->add('checkNumber', 'text', array('required' => false))
         ;
     }
 

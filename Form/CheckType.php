@@ -9,7 +9,7 @@ class CheckType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('check_number', 'text', array('required' => false));
+        $builder->add('checkNumber', 'text', array('required' => false));
     }
 
     public function getName()
