@@ -7,6 +7,7 @@ use JMS\Payment\CoreBundle\Model\FinancialTransactionInterface;
 use JMS\Payment\CoreBundle\Model\PaymentInstructionInterface;
 use JMS\Payment\CoreBundle\Plugin\PluginInterface;
 use JMS\Payment\CoreBundle\Plugin\AbstractPlugin;
+use JMS\Payment\CoreBundle\Plugin\ErrorBuilder;
 use JMS\Payment\CoreBundle\Plugin\Exception\PaymentPendingException;
 use JMS\Payment\CoreBundle\Plugin\Exception\FinancialException;
 use JMS\Payment\CoreBundle\Plugin\Exception\Action\VisitUrl;
