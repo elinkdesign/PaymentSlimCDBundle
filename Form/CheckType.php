@@ -19,7 +19,6 @@ class CheckType extends AbstractType
             ->add('checkNumber', 'text', array(
                 'required' => false,
                 'label' => 'Check Number',
-                'validation_constraint' => new Assert\NotBlank(),
                 'error_bubbling' => true
             ))
         ;

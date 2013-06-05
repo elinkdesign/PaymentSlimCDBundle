@@ -19,19 +19,16 @@ class ECheckType extends AbstractType
             ->add('accountNumber', 'text', array(
                 'required' => false,
                 'label' => 'Account Number',
-                'validation_constraint' => new Assert\NotBlank(),
                 'error_bubbling' => true
             ))
             ->add('routingNumber', 'text', array(
                 'required' => false,
                 'label' => 'Routing Number',
-                'validation_constraint' => new Assert\NotBlank(),
                 'error_bubbling' => true
             ))
             ->add('checkNumber', 'text', array(
                 'required' => false,
                 'label' => 'Check Number',
-                'validation_constraint' => new Assert\NotBlank(),
                 'error_bubbling' => true
             ))
         ;

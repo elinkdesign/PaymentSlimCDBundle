@@ -28,7 +28,6 @@ class CreditCardType extends AbstractType
             ->add('fullName', 'text', array(
                 'required' => false,
                 'label' => 'Cardholder\'s Name',
-                'validation_constraint' => new Assert\NotBlank(),
                 'error_bubbling' => true
             ))
             ->add('ccType', 'choice', array(
@@ -41,14 +40,12 @@ class CreditCardType extends AbstractType
                     'amex' => 'American Express'
                 ),
                 'empty_value' => 'Choose the card type',
-                'validation_constraint' => new Assert\NotBlank(),
                 'error_bubbling' => true
             ))
             ->add('ccNumber', 'text', array(
                 'required' => false,
                 'label' => 'Card Number',
                 'max_length' => 16,
-                'validation_constraint' => new Assert\NotBlank(),
                 'invalid_message' => 'Please enter a %num%-digit number.',
                 'invalid_message_parameters' => array('%num%' => 16),
                 'error_bubbling' => true
@@ -60,20 +57,15 @@ class CreditCardType extends AbstractType
                 'format' => 'MM yyyy dd',
                 'years' => range(date('Y'), date('Y') + 12),
                 'months' => range(1, 12),
-                'days' => array(1),
                 'empty_value' => array(
                     'year' => 'Select year', 
-                    'month' => 'Select month', 
-                    'day' => false
+                    'month' => 'Select month'
                 ),
-                'validation_constraint' => new Assert\NotBlank(),
-                'invalid_message' => 'Please enter a valid expiration date.',
                 'error_bubbling' => true
             ))
             ->add('securityCode', 'text', array(
                 'required' => false,
                 'label' => 'CVV Code',
-                'validation_constraint' => new Assert\NotBlank(),
                 'invalid_message' => 'Please enter a valid expiration date.',
                 'error_bubbling' => true
             ))
