@@ -2,7 +2,6 @@
 
 namespace eLink\Payment\SlimCDBundle\Form;
 
-use eLink\Payment\SlimCDBundle\Form\EventListener\FullNameFieldSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
