@@ -53,18 +53,21 @@ class CreditCardType extends AbstractType
                 'required' => false,
                 'label' => 'Expiration Date',
                 'widget' => 'choice',
-                'format' => 'MM yyyy dd',
+                'format' => 'dd MM yyyy',
                 'years' => range(date('Y'), date('Y') + 12),
                 'months' => range(1, 12),
+                'data' => new \Datetime('first day of this month + 1 year'),
                 'empty_value' => array(
-                    'year' => 'Select year', 
-                    'month' => 'Select month'
+                    'year' => 'yyyy', 
+                    'month' => 'MM',
+                    'day' => 'dd'
                 ),
                 'error_bubbling' => true
             ))
             ->add('securityCode', 'text', array(
                 'required' => false,
                 'label' => 'CVV Code',
+                'max_length' => '4',
                 'invalid_message' => 'Please enter a valid expiration date.',
                 'error_bubbling' => true
             ))
