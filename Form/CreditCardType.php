@@ -39,7 +39,7 @@ class CreditCardType extends AbstractType
                     'discover' => 'Discover',
                     'amex' => 'American Express'
                 ),
-                'empty_value' => 'Choose the card type',
+                'empty_value' => 'Card Type',
                 'error_bubbling' => true
             ))
             ->add('ccNumber', 'text', array(
