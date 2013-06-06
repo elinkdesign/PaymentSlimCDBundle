@@ -1,3 +1,4 @@
+
 <?php
 
 namespace eLink\Payment\SlimCDBundle\Plugin;
@@ -19,6 +20,21 @@ use eLink\Payment\SlimCDBundle\Client\Response;
 
 class CreditCardPlugin extends AbstractPlugin
 {
+    /**
+     * @var \eLink\Payment\SlimCDBundle\Client\Client
+     */
+    protected $client;
+
+    /**
+     * @param string $returnUrl
+     * @param string $cancelUrl
+     * @param \eLink\Payment\SlimCDBundle\Client\Client $client
+     */
+    public function __construct(Client $client)
+    {
+        $this->client = $client;
+    }
+
     public function checkPaymentInstruction(PaymentInstructionInterface $instruction)
     {
         $errorBuilder = new ErrorBuilder();
@@ -35,6 +51,31 @@ class CreditCardPlugin extends AbstractPlugin
         if ($errorBuilder->hasErrors()) {
             throw $errorBuilder->getException();
         }
+    }
+
+    // public function validatePaymentInstruction(PaymentInstructionInterface $instruction)
+    // {
+        
+    // }
+
+    public function approve(FinancialTransactionInterface $transaction, $retry)
+    {
+        $this->createCheckoutBillingAgreement($transaction, 'AUTH');
+    }
+
+    public function approveAndDeposit(FinancialTransactionInterface $transaction, $retry)
+    {
+        $this->createCheckoutBillingAgreement($transaction, 'SALE');
+    }
+
+    public function credit(FinancialTransactionInterface $transaction, $retry)
+    {
+        $this->createCheckoutBillingAgreement($transaction, 'CREDIT');
+    }
+
+    public function deposit(FinancialTransactionInterface $transaction, $retry)
+    {
+        $this->createCheckoutBillingAgreement($transaction, 'ADD');
     }
 
     public function processes($method)
