@@ -1,4 +1,3 @@
-
 <?php
 
 namespace eLink\Payment\SlimCDBundle\Plugin;
