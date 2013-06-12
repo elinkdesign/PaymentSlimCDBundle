@@ -25,17 +25,28 @@ class CheckPlugin extends AbstractPlugin
         $data = $instruction->getExtendedData();
 
         if (!$data->get('checkNumber')) {
-            $errorBuilder->addDataError('number', 'form.error.required');
+            // $errorBuilder->addDataError('checkNumber', 'form.error.required');
         }
 
         if ($errorBuilder->hasErrors()) {
             throw $errorBuilder->getException();
         }
     }
-
+    
     public function approveAndDeposit(FinancialTransactionInterface $transaction, $retry)
     {
         $this->createCheckoutBillingAgreement($transaction, 'SALE');
+    }
+
+    protected function createCheckoutBillingAgreement(FinancialTransactionInterface $transaction, $paymentAction)
+    {
+        $data = $transaction->getExtendedData();
+        
+        $transaction->setResponseCode('Success');
+        $transaction->setReasonCode('PaymentActionSuccess');
+
+        $transaction->setResponseCode(PluginInterface::RESPONSE_CODE_SUCCESS);
+        $transaction->setReasonCode(PluginInterface::REASON_CODE_SUCCESS);
     }
 
     public function processes($method)
