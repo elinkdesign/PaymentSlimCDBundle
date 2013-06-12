@@ -24,13 +24,9 @@ class CheckPlugin extends AbstractPlugin
         $errorBuilder = new ErrorBuilder();
         $data = $instruction->getExtendedData();
 
-        // if (!$data->get('ccNumber')) {
-        //     $errorBuilder->addDataError('number', 'form.error.required');
-        // }
-
-        // if ($instruction->getAmount() > 10000) {
-        //     $errorBuilder->addGlobalError('form.error.credit_card_max_limit_exceeded');
-        // }
+        if (!$data->get('checkNumber')) {
+            $errorBuilder->addDataError('number', 'form.error.required');
+        }
 
         if ($errorBuilder->hasErrors()) {
             throw $errorBuilder->getException();
