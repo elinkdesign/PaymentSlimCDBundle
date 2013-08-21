@@ -9,6 +9,10 @@
         {
             "name": "Michael Poplin",
             "email": "thepoplin@gmail.com"
+        },
+        {
+            "name": "Christopher Short",
+            "email": "chris@christophershort.com"
         }
     ],
     "require": {

@@ -2,10 +2,6 @@ _credit_card_ajax:
     pattern:  /credit_card_ajax
     defaults: { _controller: eLinkPaymentSlimCDBundle:Service:creditCardAjax }
 
-_e_check_ajax:
-    pattern:  /e_check_ajax
-    defaults: { _controller: eLinkPaymentSlimCDBundle:Service:eCheckAjax }
-
 _check_ajax:
     pattern:  /check_ajax
     defaults: { _controller: eLinkPaymentSlimCDBundle:Service:checkAjax }
