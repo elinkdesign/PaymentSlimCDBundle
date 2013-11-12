@@ -56,6 +56,17 @@ class CreditCardPlugin extends AbstractPlugin
     // {
         
     // }
+    
+    protected function createCheckoutBillingAgreement(FinancialTransactionInterface $transaction, $paymentAction)
+    {
+        $data = $transaction->getExtendedData();
+        
+        $transaction->setResponseCode('Success');
+        $transaction->setReasonCode('PaymentActionSuccess');
+
+        $transaction->setResponseCode(PluginInterface::RESPONSE_CODE_SUCCESS);
+        $transaction->setReasonCode(PluginInterface::REASON_CODE_SUCCESS);
+    }
 
     public function approve(FinancialTransactionInterface $transaction, $retry)
     {
