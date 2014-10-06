@@ -6,6 +6,7 @@
 
     <parameters>
         <parameter key="payment.plugin.credit_card.class">eLink\Payment\SlimCDBundle\Plugin\CreditCardPlugin</parameter>
+        <parameter key="payment.plugin.e_check.class">eLink\Payment\SlimCDBundle\Plugin\ECheckPlugin</parameter>
         <parameter key="payment.plugin.check.class">eLink\Payment\SlimCDBundle\Plugin\CheckPlugin</parameter>
         <parameter key="payment.slimcd.authentication_strategy.token.class">eLink\Payment\SlimCDBundle\Client\Authentication\TokenAuthenticationStrategy</parameter>
         <parameter key="payment.slimcd.clientid"></parameter>
@@ -17,6 +18,7 @@
         <parameter key="payment.slimcd.usetestaccount"></parameter>
         
         <parameter key="payment.form.credit_card_type.class">eLink\Payment\SlimCDBundle\Form\CreditCardType</parameter>
+        <parameter key="payment.form.e_check_type.class">eLink\Payment\SlimCDBundle\Form\ECheckType</parameter>
         <parameter key="payment.form.check_type.class">eLink\Payment\SlimCDBundle\Form\CheckType</parameter>
 
         <parameter key="payment.slimcd.client.class">eLink\Payment\SlimCDBundle\Client\Client</parameter>
@@ -47,6 +49,11 @@
             <tag name="payment.plugin" />
         </service>
 
+        <service id="payment.plugin.e_check" class="%payment.plugin.e_check.class%">
+            <argument type="service" id="payment.slimcd.client" />
+            <tag name="payment.plugin" />
+        </service>
+
         <service id="payment.plugin.check" class="%payment.plugin.check.class%">
             <argument type="service" id="payment.slimcd.client" />
             <tag name="payment.plugin" />
@@ -56,6 +63,12 @@
             <argument type="service" id="security.context" />
             <tag name="payment.method_form_type" />
             <tag name="form.type" alias="credit_card" />
+        </service>
+
+        <service id="payment.form.e_check_type" class="%payment.form.e_check_type.class%">
+            <argument type="service" id="security.context" />
+            <tag name="payment.method_form_type" />
+            <tag name="form.type" alias="e_check" />
         </service>
 
         <service id="payment.form.check_type" class="%payment.form.check_type.class%">
