@@ -68,8 +68,11 @@ class CreditCardType extends AbstractType
                 'required' => false,
                 'label' => 'CVV Code',
                 'max_length' => '4',
-                'invalid_message' => 'Please enter a valid expiration date.',
+                'invalid_message' => 'Please enter a valid security code.',
                 'error_bubbling' => true
+            ))
+            ->add('token', 'hidden', array(
+                'required' => false
             ))
         ;
 

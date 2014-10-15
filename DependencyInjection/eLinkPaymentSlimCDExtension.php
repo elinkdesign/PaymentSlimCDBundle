@@ -26,5 +26,10 @@ class eLinkPaymentSlimCDExtension extends Extension
         $container->setParameter('payment.slimcd.key', $config['slimcd_key']);
         $container->setParameter('payment.slimcd.usetestaccount', $config['slimcd_usetestaccount']);
         $container->setParameter('payment.slimcd.endpoint', $config['slimcd_endpoint']);
+
+        $container->setParameter('payment.slimcd.access_load_username', $config['slimcd_access_load_username']);
+        $container->setParameter('payment.slimcd.access_load_password', $config['slimcd_access_load_password']);
+        $container->setParameter('payment.slimcd.access_sale_username', $config['slimcd_access_sale_username']);
+        $container->setParameter('payment.slimcd.access_sale_password', $config['slimcd_access_sale_password']);
     }
 }

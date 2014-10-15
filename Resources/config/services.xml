@@ -16,7 +16,12 @@
         <parameter key="payment.slimcd.priceid"></parameter>
         <parameter key="payment.slimcd.key"></parameter>
         <parameter key="payment.slimcd.usetestaccount"></parameter>
-        
+
+        <parameter key="payment.slimcd.access_load_username"></parameter>
+        <parameter key="payment.slimcd.access_load_password"></parameter>
+        <parameter key="payment.slimcd.access_sale_username"></parameter>
+        <parameter key="payment.slimcd.access_sale_password"></parameter>
+
         <parameter key="payment.form.credit_card_type.class">eLink\Payment\SlimCDBundle\Form\CreditCardType</parameter>
         <parameter key="payment.form.e_check_type.class">eLink\Payment\SlimCDBundle\Form\ECheckType</parameter>
         <parameter key="payment.form.check_type.class">eLink\Payment\SlimCDBundle\Form\CheckType</parameter>

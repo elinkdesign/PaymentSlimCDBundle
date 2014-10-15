@@ -122,4 +122,28 @@ class Client
 
         return $response;
     }
+
+    public function sendApiRequest(array $parameters)
+    {
+        // setup request, and authenticate it
+        $request = new Request(
+            $this->authenticationStrategy->getApiEndpoint($this->isDebug),
+            'POST',
+            $parameters
+        );
+
+        $request->request->set('ver', '1.0');
+
+        $this->authenticationStrategy->authenticate($request);
+        $response = $this->request($request);
+
+        if (200 !== $response->getStatus()) {
+            throw new CommunicationException('The API request was not successful (Status: '.$response->getStatus().'): '.$response->getContent());
+        }
+
+        $parameters = array();
+        parse_str($response->getContent(), $parameters);
+
+        return new Response($parameters);
+    }
 }

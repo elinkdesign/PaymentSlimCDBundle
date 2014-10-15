@@ -27,12 +27,16 @@ class TokenAuthenticationStrategy implements AuthenticationStrategyInterface
 
     public function authenticate(Request $request)
     {
-        $request->request->set('GW_CLIENTID', $this->clientid);
-        $request->request->set('GW_ENDPOINT', $this->endpoint);
-        $request->request->set('GW_PASSWORD', $this->password);
-        $request->request->set('GW_SITEID', $this->siteid);
-        $request->request->set('GW_PRICEID', $this->priceid);
-        $request->request->set('GW_KEY', $this->key);
-        $request->request->set('USETESTACCOUNT', $this->usetestaccount);
+        $request->request->set('username', $this->clientid);
+        $request->request->set('clientid', $this->clientid);
+        $request->request->set('password', $this->password);
+        $request->request->set('siteid', $this->siteid);
+        $request->request->set('priceid', $this->priceid);
+        $request->request->set('key', $this->key);
+    }
+
+    public function getApiEndpoint($isDebug)
+    {
+        return $this->endpoint;
     }
 }

@@ -12,6 +12,7 @@ use JMS\Payment\CoreBundle\Plugin\Exception\PaymentPendingException;
 use JMS\Payment\CoreBundle\Plugin\Exception\FinancialException;
 use JMS\Payment\CoreBundle\Plugin\Exception\Action\VisitUrl;
 use JMS\Payment\CoreBundle\Plugin\Exception\ActionRequiredException;
+use JMS\Payment\CoreBundle\Plugin\Exception\CommunicationException;
 use JMS\Payment\CoreBundle\Plugin\Exception\InvalidPaymentInstructionException;
 use JMS\Payment\CoreBundle\Util\Number;
 use eLink\Payment\SlimCDBundle\Client\Client;
@@ -39,33 +40,51 @@ class CreditCardPlugin extends AbstractPlugin
         $errorBuilder = new ErrorBuilder();
         $data = $instruction->getExtendedData();
 
-        // if (!$data->get('ccNumber')) {
-        //     $errorBuilder->addDataError('number', 'form.error.required');
-        // }
+        if (!$data->get('token') && !$data->get('ccNumber')) {
+            $errorBuilder->addGlobalError('Your payment could not be processed using the details entered. Please try again.');
+        }
 
-        // if ($instruction->getAmount() > 10000) {
-        //     $errorBuilder->addGlobalError('form.error.credit_card_max_limit_exceeded');
-        // }
+        if ($instruction->getAmount() > 10000) {
+            $errorBuilder->addGlobalError('This transaction exceeds the maximum allowed.');
+        }
 
         if ($errorBuilder->hasErrors()) {
             throw $errorBuilder->getException();
         }
     }
-
-    // public function validatePaymentInstruction(PaymentInstructionInterface $instruction)
-    // {
-        
-    // }
     
     protected function createCheckoutBillingAgreement(FinancialTransactionInterface $transaction, $paymentAction)
     {
         $data = $transaction->getExtendedData();
-        
+
         $transaction->setResponseCode('Success');
         $transaction->setReasonCode('PaymentActionSuccess');
 
         $transaction->setResponseCode(PluginInterface::RESPONSE_CODE_SUCCESS);
         $transaction->setReasonCode(PluginInterface::REASON_CODE_SUCCESS);
+
+        /*$success = $message = false;
+
+        try {
+            $response = $this->client->sendApiRequest(array(
+                'transtype' => $paymentAction,
+                'amount' => $transaction->getRequestedAmount(),
+                'gateid' => $data->get('token')
+            ));
+        } catch (CommunicationException $e) {
+            $message = "Failed to process your payment. Please try again.";
+        }
+
+        if (!$success) {
+            $ex = new FinancialException($message);
+            $ex->setFinancialTransaction($transaction);
+            $transaction->setResponseCode('Failed');
+            $transaction->setReasonCode(PluginInterface::REASON_CODE_INVALID);
+            throw $ex;
+        }
+
+        $transaction->setResponseCode(PluginInterface::RESPONSE_CODE_SUCCESS);
+        $transaction->setReasonCode(PluginInterface::REASON_CODE_SUCCESS);*/
     }
 
     public function approve(FinancialTransactionInterface $transaction, $retry)
