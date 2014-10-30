@@ -14,48 +14,65 @@ class Response
 
     public function isSuccess()
     {
-        $ack = $this->body->get('ACK');
-
-        return 'Success' === $ack || 'SuccessWithWarning' === $ack;
+        return 'success' == strtolower($this->body->get('response'));
     }
 
     public function isError()
     {
-        $ack = $this->body->get('ACK');
-
-        return 'Failure' === $ack || 'FailureWithWarning' === $ack || 'Warning' === $ack;
+	    return 'fail' == strtolower($this->body->get('response'));
     }
 
-    public function getErrors()
+    public function getErrorMessage()
     {
-        $errors = array();
-        $i = 0;
-        while ($this->body->has('L_ERRORCODE'.$i)) {
-            $errors[] = array(
-                'code' => $this->body->get('L_ERRORCODE'.$i),
-                'short_message' => $this->body->get('L_SHORTMESSAGE'.$i),
-                'long_message' => $this->body->get('L_LONGMESSAGE'.$i),
-            );
-
-            $i++;
-        }
-
-        return $errors;
+	    return $this->translateErrorMessages($this->body->get('description'));
     }
 
     public function __toString()
     {
-        if ($this->isError()) {
-            $str = 'Debug-Token: '.$this->body->get('CORRELATIONID')."\n";
-
-            foreach ($this->getErrors() as $error) {
-                $str .= "{$error['code']}: {$error['short_message']} ({$error['long_message']})\n";
-            }
-        }
-        else {
-            $str = var_export($this->body->all(), true);
-        }
-
-        return $str;
+        return var_export($this->body->all(), true);
     }
+
+	public function translateErrorMessages($description) {
+		// Example: *--NEED_EXPMONTH--NEED_EXPYEAR--NEED_CARDNUMBER.
+		$translated = '';
+
+		if ($this->_descriptionContains($description, 'NEED_CARDNUMBER')) {
+			$translated .= 'Your card number was not entered.';
+		}
+
+		if ($this->_descriptionContains($description, array('NEED_EXPMONTH', 'NEED_EXPYEAR'))) {
+			$translated .= "Your card expiration month and year were not provided.\n";
+		} else if ($this->_descriptionContains($description, array('MOD10_FAILED_OR_CARDEXPIRED'))) {
+			$translated .= "An incorrect card number or expiration date was provided.\n";
+		}
+
+		if ($this->_descriptionContains($description, 'CVV')) {
+			$translated .= 'Your CVV code was entered incorrectly.';
+		}
+
+		if ($this->_descriptionContains($description, 'DUPLICATE')) {
+			$translated .= 'Your payment already went through. Will not submit a duplicate charge.';
+		}
+
+		if (empty($translated)) {
+			$translated = 'Your payment could not be processed. Please try again.';
+		}
+
+		return $translated;
+	}
+
+	protected function _descriptionContains($description, $needle)
+	{
+		if (is_array($needle)) {
+			foreach ($needle as $_needle) {
+				if ($this->_descriptionContains($description, $_needle)) {
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		return stripos($description, $needle) !== false;
+	}
 }

@@ -141,8 +141,11 @@ class Client
             throw new CommunicationException('The API request was not successful (Status: '.$response->getStatus().'): '.$response->getContent());
         }
 
-        $parameters = array();
-        parse_str($response->getContent(), $parameters);
+	    $parameters = json_decode($response->getContent(), true);
+
+	    if (isset($parameters['reply'])) {
+		    $parameters = $parameters['reply'];
+	    }
 
         return new Response($parameters);
     }

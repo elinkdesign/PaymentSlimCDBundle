@@ -74,6 +74,9 @@ class CreditCardType extends AbstractType
             ->add('token', 'hidden', array(
                 'required' => false
             ))
+            ->add('last4', 'hidden', array(
+                'required' => false
+            ))
         ;
 
         $user = $this->securityContext->getToken()->getUser();

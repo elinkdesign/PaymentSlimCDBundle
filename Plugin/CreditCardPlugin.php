@@ -63,14 +63,20 @@ class CreditCardPlugin extends AbstractPlugin
         $transaction->setResponseCode(PluginInterface::RESPONSE_CODE_SUCCESS);
         $transaction->setReasonCode(PluginInterface::REASON_CODE_SUCCESS);
 
-        /*$success = $message = false;
+        $success = $message = false;
 
         try {
+	        $api_params = $data->has('api_params') ? $data->get('api_params') : array();
+
             $response = $this->client->sendApiRequest(array(
                 'transtype' => $paymentAction,
                 'amount' => $transaction->getRequestedAmount(),
-                'gateid' => $data->get('token')
-            ));
+                'temporary_token' => $data->get('token'),
+            ) + $api_params);
+
+	        if (!($success = $response->isSuccess())) {
+		        $message = $response->getErrorMessage();
+	        }
         } catch (CommunicationException $e) {
             $message = "Failed to process your payment. Please try again.";
         }
@@ -84,7 +90,7 @@ class CreditCardPlugin extends AbstractPlugin
         }
 
         $transaction->setResponseCode(PluginInterface::RESPONSE_CODE_SUCCESS);
-        $transaction->setReasonCode(PluginInterface::REASON_CODE_SUCCESS);*/
+        $transaction->setReasonCode(PluginInterface::REASON_CODE_SUCCESS);
     }
 
     public function approve(FinancialTransactionInterface $transaction, $retry)

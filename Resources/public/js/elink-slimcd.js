@@ -1,7 +1,7 @@
 var eLinkSlimCD = {
 	data: {
 		"ver": "1.0",
-		"transtype": "LOAD"
+		"transtype": "QUEUE"
 	},
 
 	successCallback: function(token) {},
@@ -37,14 +37,14 @@ var eLinkSlimCD = {
 				"cardnumber": data.cardnumber,
 				"expmonth": data.expmonth,
 				"expyear": data.expyear,
-				"cvv": data.cvv || ''
+				"cvv2": data.cvv2 || ''
 			});
 		}
 
 		jQuery.support.cors = true;
 		jQuery.ajax({
 			type: 'POST',
-			url: 'https://trans.slimcd.com/soft/json/jsonpayment.asp',
+			url: 'https://trans.slimcd.com/wswebservices/GetTemporaryToken.asp',
 			crossDomain: true,
 			timeout: 60000,
 			contentType: "application/json",
@@ -52,8 +52,8 @@ var eLinkSlimCD = {
 			data: this.data,
 			success: function (responseData, textStatus) {
 				if (responseData.reply.response == 'Success') {
-					// gateid = token to pass to SALE transtype on the server
-					eLinkSlimCD.successCallback(responseData.reply.datablock.gateid);
+					// temporary_token = token to pass to SALE transtype on the server
+					eLinkSlimCD.successCallback(responseData.reply);
 				} else {
 					eLinkSlimCD.errorCallback(responseData, textStatus);
 				}
@@ -63,6 +63,9 @@ var eLinkSlimCD = {
 	},
 
 	translateErrorMessages: function(description) {
+		// The GetTemporaryToken endpoint actually returns a readable error message.
+		return 'Unable to process your transaction: ' + description;
+
 		// Example: *--NEED_EXPMONTH--NEED_EXPYEAR--NEED_CARDNUMBER.
 		var translated = '';
 

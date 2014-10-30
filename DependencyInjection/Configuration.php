@@ -26,7 +26,7 @@ class Configuration implements ConfigurationInterface
                     ->scalarNode('slimcd_priceid')->isRequired()->cannotBeEmpty()->end()
                     ->scalarNode('slimcd_key')->isRequired()->cannotBeEmpty()->end()
                     ->booleanNode('slimcd_usetestaccount')->defaultValue('%kernel_debug%')->end()
-                    ->scalarNode('slimcd_endpoint')->defaultValue('https://stats.slimcd.com/wswebservices/transact.asmx/PostXML')->cannotBeEmpty()->end()
+                    ->scalarNode('slimcd_endpoint')->defaultValue('https://trans.slimcd.com/soft/json/jsonpayment.asp')->cannotBeEmpty()->end()
                     ->scalarNode('slimcd_access_load_username')->isRequired()->cannotBeEmpty()->end()
                     ->scalarNode('slimcd_access_load_password')->isRequired()->end()
                     ->scalarNode('slimcd_access_sale_username')->isRequired()->cannotBeEmpty()->end()
