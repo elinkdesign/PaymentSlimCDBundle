@@ -44,10 +44,6 @@ class CreditCardPlugin extends AbstractPlugin
             $errorBuilder->addGlobalError('Your payment could not be processed using the details entered. Please try again.');
         }
 
-        if ($instruction->getAmount() > 10000) {
-            $errorBuilder->addGlobalError('This transaction exceeds the maximum allowed.');
-        }
-
         if ($errorBuilder->hasErrors()) {
             throw $errorBuilder->getException();
         }
@@ -56,13 +52,6 @@ class CreditCardPlugin extends AbstractPlugin
     protected function createCheckoutBillingAgreement(FinancialTransactionInterface $transaction, $paymentAction)
     {
         $data = $transaction->getExtendedData();
-
-        $transaction->setResponseCode('Success');
-        $transaction->setReasonCode('PaymentActionSuccess');
-
-        $transaction->setResponseCode(PluginInterface::RESPONSE_CODE_SUCCESS);
-        $transaction->setReasonCode(PluginInterface::REASON_CODE_SUCCESS);
-
         $success = $message = false;
 
         try {
@@ -91,6 +80,9 @@ class CreditCardPlugin extends AbstractPlugin
 
         $transaction->setResponseCode(PluginInterface::RESPONSE_CODE_SUCCESS);
         $transaction->setReasonCode(PluginInterface::REASON_CODE_SUCCESS);
+
+	    $ticket_number = $response->getData('gateid');
+	    $data->set('ticket_number', $ticket_number, false);
     }
 
     public function approve(FinancialTransactionInterface $transaction, $retry)

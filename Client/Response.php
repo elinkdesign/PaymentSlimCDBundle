@@ -22,6 +22,16 @@ class Response
 	    return 'fail' == strtolower($this->body->get('response'));
     }
 
+	public function getData($k, $default = NULL) {
+		$datablock = $this->body->get('datablock');
+
+		if (!$datablock || !isset($datablock[$k])) {
+			return $default;
+		}
+
+		return $datablock[$k];
+	}
+
     public function getErrorMessage()
     {
 	    return $this->translateErrorMessages($this->body->get('description'));
