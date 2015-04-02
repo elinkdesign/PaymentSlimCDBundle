@@ -46,7 +46,7 @@ var eLinkSlimCD = {
 			type: 'POST',
 			url: 'https://trans.slimcd.com/wswebservices/GetTemporaryToken.asp',
 			crossDomain: true,
-			timeout: 60000,
+			timeout: 30000,
 			contentType: "application/json",
 			dataType: 'jsonp',
 			data: this.data,
