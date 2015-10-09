@@ -6,6 +6,7 @@ use JMS\Payment\CoreBundle\BrowserKit\Request;
 
 class TokenAuthenticationStrategy implements AuthenticationStrategyInterface
 {
+	protected $username;
     protected $clientid;
     protected $endpoint;
     protected $password;
@@ -16,9 +17,10 @@ class TokenAuthenticationStrategy implements AuthenticationStrategyInterface
 
     public function __construct($args)
     {
+	    $this->username = !isset($args['username']) ? $args['clientid'] : $args['username'];
+	    $this->password = $args['password'];
         $this->clientid = $args['clientid'];
         $this->endpoint = $args['endpoint'];
-        $this->password = $args['password'];
         $this->siteid = $args['siteid'];
         $this->priceid = $args['priceid'];
         $this->key = $args['key'];
@@ -27,9 +29,15 @@ class TokenAuthenticationStrategy implements AuthenticationStrategyInterface
 
     public function authenticate(Request $request)
     {
-        $request->request->set('username', $this->clientid);
+	    if (!empty($this->username)) {
+		    $request->request->set('username', $this->username);
+	    }
+
+	    if (!empty($this->password)) {
+		    $request->request->set('password', $this->password);
+	    }
+
         $request->request->set('clientid', $this->clientid);
-        $request->request->set('password', $this->password);
         $request->request->set('siteid', $this->siteid);
         $request->request->set('priceid', $this->priceid);
         $request->request->set('key', $this->key);
