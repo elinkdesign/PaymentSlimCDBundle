@@ -1,6 +1,7 @@
 <?php
 namespace eLink\Payment\SlimCDBundle\Client;
 
+use eLink\Payment\SlimCDBundle\Client\Authentication\TokenAuthenticationStrategy;
 use Symfony\Component\BrowserKit\Response as RawResponse;
 
 use JMS\Payment\CoreBundle\BrowserKit\Request;
@@ -9,6 +10,7 @@ use eLink\Payment\SlimCDBundle\Client\Authentication\AuthenticationStrategyInter
 
 class Client
 {
+	/** @var TokenAuthenticationStrategy */
     protected $authenticationStrategy;
 
     protected $isDebug;
