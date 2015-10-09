@@ -20,6 +20,7 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder
             ->root('payment_slimcd')
                 ->children()
+                    ->scalarNode('slimcd_username')->end()
                     ->scalarNode('slimcd_clientid')->isRequired()->cannotBeEmpty()->end()
                     ->scalarNode('slimcd_password')->end()
                     ->scalarNode('slimcd_siteid')->isRequired()->cannotBeEmpty()->end()
