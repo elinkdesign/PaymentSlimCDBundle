@@ -37,10 +37,13 @@ class TokenAuthenticationStrategy implements AuthenticationStrategyInterface
 		    $request->request->set('password', $this->password);
 	    }
 
+	    if (!empty($this->key)) {
+		    $request->request->set('key', $this->key);
+	    }
+
         $request->request->set('clientid', $this->clientid);
         $request->request->set('siteid', $this->siteid);
         $request->request->set('priceid', $this->priceid);
-        $request->request->set('key', $this->key);
     }
 
     public function getApiEndpoint($isDebug)

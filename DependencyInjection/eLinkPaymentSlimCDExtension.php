@@ -19,6 +19,7 @@ class eLinkPaymentSlimCDExtension extends Extension
         $xmlLoader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $xmlLoader->load('services.xml');
 
+        $container->setParameter('payment.slimcd.username', $config['slimcd_username']);
         $container->setParameter('payment.slimcd.clientid', $config['slimcd_clientid']);
         $container->setParameter('payment.slimcd.password', $config['slimcd_password']);
         $container->setParameter('payment.slimcd.siteid', $config['slimcd_siteid']);

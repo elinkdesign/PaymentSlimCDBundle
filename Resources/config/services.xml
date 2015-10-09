@@ -9,6 +9,7 @@
         <parameter key="payment.plugin.e_check.class">eLink\Payment\SlimCDBundle\Plugin\ECheckPlugin</parameter>
         <parameter key="payment.plugin.check.class">eLink\Payment\SlimCDBundle\Plugin\CheckPlugin</parameter>
         <parameter key="payment.slimcd.authentication_strategy.token.class">eLink\Payment\SlimCDBundle\Client\Authentication\TokenAuthenticationStrategy</parameter>
+        <parameter key="payment.slimcd.username"></parameter>
         <parameter key="payment.slimcd.clientid"></parameter>
         <parameter key="payment.slimcd.endpoint"></parameter>
         <parameter key="payment.slimcd.password"></parameter>
@@ -34,6 +35,7 @@
 
         <service id="payment.slimcd.authentication_strategy.token" class="%payment.slimcd.authentication_strategy.token.class%">
             <argument type="collection">
+                <argument key="username">%payment.slimcd.username%</argument>
                 <argument key="clientid">%payment.slimcd.clientid%</argument>
                 <argument key="endpoint">%payment.slimcd.endpoint%</argument>
                 <argument key="password">%payment.slimcd.password%</argument>
