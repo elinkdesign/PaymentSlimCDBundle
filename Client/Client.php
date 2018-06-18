@@ -65,6 +65,7 @@ class Client
         curl_setopt_array($curl, $this->curlOptions);
         curl_setopt($curl, CURLOPT_URL, $request->getUri());
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_SSLVERSION, 6);
         curl_setopt($curl, CURLOPT_HEADER, true);
 
         // add headers
